@@ -10,6 +10,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [photoUser, setPhotoUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -22,6 +23,8 @@ function RegisterPage() {
       formData.append("password", password);
       formData.append("address", address);
       formData.append("phoneNumber", phoneNumber);
+      formData.append("photoUser", photoUser);
+
       const { data } = await axios({
         method: "POST",
         url: "http://localhost:3000/user/register",
@@ -30,7 +33,7 @@ function RegisterPage() {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Berhasil Login",
+        title: "Berhasil Register",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -98,15 +101,15 @@ function RegisterPage() {
             />
 
             {/* Photo User */}
-            {/* <input
-              type="text"
+            <input
+              type="file"
               autoComplete="off"
               id="phoneNumber"
               className="px-4 mb-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your phone number"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            /> */}
+              // value={photoUser}
+              onChange={(e) => setPhotoUser(e.target.files[0])}
+            />
 
             {/* Address */}
             <input
