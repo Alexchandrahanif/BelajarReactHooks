@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       if (localStorage.getItem("authorization")) {
         throw redirect("/");
       }
-      //   return null;
+      return null;
     },
   },
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       if (localStorage.getItem("authorization")) {
         throw redirect("/");
       }
-      //   return null;
+      return null;
     },
   },
   {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       if (!localStorage.getItem("authorization")) {
         throw redirect("/login");
       }
-      //   return null;
+      return null;
     },
   },
 ]);

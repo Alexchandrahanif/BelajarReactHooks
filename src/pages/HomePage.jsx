@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../style";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchUser } from "../redux/action/user";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { Users } = useSelector((state) => state.UserReducer);
+
+  useEffect(() => {
+    dispatch(FetchUser());
+  }, []);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -23,6 +32,9 @@ const HomePage = () => {
       }
     });
   };
+  // if (Users.data === undefined) {
+  //   return <h1>Loading</h1>;
+  // }
   return (
     <section>
       <div className={styles.padding}>
@@ -33,6 +45,13 @@ const HomePage = () => {
         >
           Logout
         </button>
+      </div>
+      <div className="bg-sky-900">
+        {Users.data?.map((item) => {
+          <p key={item.id}>{item.username}</p>;
+        })}
+
+        {/* {JSON.stringify(Users)} */}
       </div>
     </section>
   );
