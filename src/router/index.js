@@ -1,11 +1,44 @@
-// import { createBrowserRouter } from "react-router-dom";
-// import LoginPage from "../pages/LoginPage";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect,
+} from "react-router-dom";
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <LoginPage />,
-//   },
-// ]);
+import LoginPage from "../pages/LoginPage";
+import HomePage from "../pages/HomePage";
+import RegisterPage from "../pages/RegisterPage";
 
-// export default router;
+const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <LoginPage />,
+    loader: () => {
+      if (localStorage.getItem("authorization")) {
+        throw redirect("/");
+      }
+      //   return null;
+    },
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
+    loader: () => {
+      if (localStorage.getItem("authorization")) {
+        throw redirect("/");
+      }
+      //   return null;
+    },
+  },
+  {
+    path: "/",
+    element: <HomePage />,
+    loader: () => {
+      if (!localStorage.getItem("authorization")) {
+        throw redirect("/login");
+      }
+      //   return null;
+    },
+  },
+]);
+
+export default router;
