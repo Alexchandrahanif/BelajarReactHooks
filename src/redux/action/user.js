@@ -7,7 +7,6 @@ export function FetchUser() {
     fetch(`${BaseUrl}/user`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
         authorization: localStorage.getItem("authorization"),
       },
     })
@@ -26,6 +25,9 @@ export function FetchUserById(id) {
   return (dispatch) => {
     fetch(`${BaseUrl}/user/${id}`, {
       method: "GET",
+      headers: {
+        authorization: localStorage.getItem("authorization"),
+      },
     })
       .then((response) => response.json())
       .then((data) =>

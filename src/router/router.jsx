@@ -7,6 +7,8 @@ import {
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
+import Layout from "../components/Layout";
+import DetailPage from "../pages/DetailPage";
 
 const router = createBrowserRouter([
   {
@@ -31,13 +33,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <HomePage />,
+    element: <Layout />,
     loader: () => {
       if (!localStorage.getItem("authorization")) {
         throw redirect("/login");
       }
       return null;
     },
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/:id",
+        element: <DetailPage />,
+      },
+    ],
   },
 ]);
 

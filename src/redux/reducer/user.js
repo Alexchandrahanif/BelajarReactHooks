@@ -1,4 +1,4 @@
-import { GetAllUser } from "../constants/user";
+import { GetAllUser, GetOneUser } from "../constants/user";
 
 let initialState = {
   Users: [],
@@ -12,7 +12,11 @@ function UserReducer(state = initialState, actions) {
         ...state,
         Users: actions.payload,
       };
-
+    case GetOneUser:
+      return {
+        ...state,
+        User: actions.payload,
+      };
     default:
       return state;
   }

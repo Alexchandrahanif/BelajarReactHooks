@@ -1,5 +1,4 @@
 import styles from "../style";
-import { login } from "../assets";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
