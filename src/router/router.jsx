@@ -9,6 +9,9 @@ import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
 import Layout from "../components/Layout";
 import DetailPage from "../pages/DetailPage";
+import IncomePage from "../pages/IncomePage";
+import SpendingPage from "../pages/SpendingPage";
+import SavingPage from "../pages/SavingPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +51,18 @@ const router = createBrowserRouter([
       {
         path: "/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "/income",
+        element: <IncomePage />,
+      },
+      {
+        path: "/spending",
+        element: <SpendingPage />,
+      },
+      {
+        path: "/saving",
+        element: <SavingPage />,
       },
     ],
   },
