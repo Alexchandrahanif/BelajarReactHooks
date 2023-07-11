@@ -8,7 +8,7 @@ const SpendingPage = () => {
     <Fragment>
       <div className="w-full h-full p-5">
         {/* Header */}
-        <div className="w-full h-[90px]  rounded-lg flex justify-between bg-slate-300 p-2 mb-5">
+        <div className="w-full h-[90px]  rounded-lg flex justify-between bg-slate-300 p-2 mb-5 dark:bg-slate-800">
           <div className="w-1/2">
             <h2 className="text-TextDark font-poppins text-[18px] font-medium ">
               Hallo Alex Chandra Hanif 👋

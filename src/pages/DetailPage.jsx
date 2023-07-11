@@ -1,39 +1,84 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { FetchUserById } from "../redux/action/user";
+import { Radio, Space, Table, Tag } from "antd";
+import { useState } from "react";
 
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: "Age",
+    dataIndex: "age",
+    key: "age",
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+    key: "address",
+  },
+  {
+    title: "Tags",
+    key: "tags",
+    dataIndex: "tags",
+    render: (tags) => (
+      <span>
+        {tags.map((tag) => {
+          let color = tag.length > 5 ? "geekblue" : "green";
+          if (tag === "loser") {
+            color = "volcano";
+          }
+          return (
+            <Tag color={color} key={tag}>
+              {tag.toUpperCase()}
+            </Tag>
+          );
+        })}
+      </span>
+    ),
+  },
+  {
+    title: "Action",
+    key: "action",
+    render: (_, record) => (
+      <Space size="middle">
+        <a>Invite {record.name}</a>
+        <a>Delete</a>
+      </Space>
+    ),
+  },
+];
+const data = [
+  {
+    key: "1",
+    name: "John Brown",
+    age: 32,
+    address: "New York No. 1 Lake Park",
+    tags: ["nice", "developer"],
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    age: 42,
+    address: "London No. 1 Lake Park",
+    tags: ["loser"],
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    age: 32,
+    address: "Sydney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+];
 const DetailPage = () => {
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
-
-  const { User } = useSelector((state) => state.UserReducer);
-  let { id } = useParams();
-
-  useEffect(() => {
-    dispatch(FetchUserById(id));
-  }, []);
-
+  const [top, setTop] = useState("topLeft");
+  const [bottom, setBottom] = useState("bottomRight");
   return (
-    <div className="flex flex-col p-6">
-      <div className="mb-5">
-        <ul>
-          <li>Nama : {User.data?.username}</li>
-          <li>Email :{User.data?.email} </li>
-          <li>address :{User.data?.address} </li>
-          <li>phoneNumber :{User.data?.phoneNumber} </li>
-        </ul>
-      </div>
-      <div>
-        <button
-          className="w-[80px] h-[30px] bg-sky-600 border border-slate-400 rounded-md"
-          onClick={() => navigate("/")}
-        >
-          Back
-        </button>
-      </div>
+    <div className="mt-5">
+      <Table columns={columns} pagination={false} dataSource={data} />
     </div>
   );
 };
-
 export default DetailPage;
