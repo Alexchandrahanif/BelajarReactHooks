@@ -71,13 +71,67 @@ const data = [
     address: "Sydney No. 1 Lake Park",
     tags: ["cool", "teacher"],
   },
+  {
+    key: "4",
+    name: "Joe Black",
+    age: 32,
+    address: "Sydney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "5",
+    name: "Joe Black",
+    age: 32,
+    address: "Sydney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "6",
+    name: "Joe Black",
+    age: 32,
+    address: "Sydney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "7",
+    name: "Joe Black",
+    age: 32,
+    address: "Sydney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
 ];
+
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(
+      `selectedRowKeys: ${selectedRowKeys}`,
+      "selectedRows: ",
+      selectedRows
+    );
+  },
+  onSelect: (record, selected, selectedRows) => {
+    console.log(record, selected, selectedRows);
+  },
+  onSelectAll: (selected, selectedRows, changeRows) => {
+    console.log(selected, selectedRows, changeRows);
+  },
+};
 const DetailPage = () => {
   const [top, setTop] = useState("topLeft");
   const [bottom, setBottom] = useState("bottomRight");
   return (
     <div className="mt-5">
-      <Table columns={columns} pagination={false} dataSource={data} />
+      <Table
+        columns={columns}
+        pagination={false}
+        dataSource={data}
+        scroll={{
+          y: 240,
+        }}
+        rowSelection={{
+          ...rowSelection,
+        }}
+      />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import { kanan, kiri } from "../assets";
+import { RightCircleTwoTone, LeftCircleTwoTone } from "@ant-design/icons";
 
 export const Layout = () => {
   const [IsOpen, setIsOpen] = useState(false);
@@ -23,13 +24,9 @@ export const Layout = () => {
           <div className="h-7 w-7 flex justify-center items-center bg-slate-200 absolute top-4 -right-3 rounded-full">
             <div className="">
               {IsOpen ? (
-                <img
-                  src={kanan}
-                  alt="oke"
-                  className="w-5 h-5 object-contain "
-                />
+                <RightCircleTwoTone style={{ fontSize: "32px" }} />
               ) : (
-                <img src={kiri} alt="oke" className="w-5 h-5 object-contain " />
+                <LeftCircleTwoTone style={{ fontSize: "32px" }} />
               )}
             </div>
           </div>
