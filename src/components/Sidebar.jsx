@@ -3,6 +3,8 @@ import { Navlink } from "../constants";
 import { Link } from "react-router-dom";
 import { logout } from "../assets";
 import Swal from "sweetalert2";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { Switch } from "antd";
 
 const Sidebar = ({ IsOpen }) => {
   const [isActive, setIsActive] = useState(0);
@@ -105,21 +107,29 @@ const Sidebar = ({ IsOpen }) => {
         {/* Toogle Dark Mode */}
         <div className="w-full h-[30px] my-3 flex">
           <div className="w-[50px] h-full flex items-center">
-            <label htmlFor="tuggle">
+            {/* <label htmlFor="tuggle">
               <div className="w-10 h-5 bg-slate-50 rounded-xl flex items-center p-1 cursor-pointer">
                 <div
                   className={`w-4 h-4 bg-slate-800 rounded-full  tuggle-circle ${
                     isToggleChecked ? "ml-4" : ""
                   } `}
                 ></div>
-              </div>
-            </label>
-            <input
+              </div> */}
+            {/* </label> */}
+            {/* <input
               type="checkbox"
               id="tuggle"
               className="hidden"
               checked={isToggleChecked}
               onChange={handleToggleChange}
+            /> */}
+            <Switch
+              checkedChildren={<CheckOutlined />}
+              unCheckedChildren={<CloseOutlined />}
+              onChange={handleToggleChange}
+              style={{
+                border: "1px solid black",
+              }}
             />
           </div>
           <div
