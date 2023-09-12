@@ -1,6 +1,6 @@
 import { Modal as Modals } from "antd";
 import React, { useState } from "react";
-import Icons from "../library/icon";
+import Icons from "../../library/icon";
 
 const ModalGroup = ({
   trigger,

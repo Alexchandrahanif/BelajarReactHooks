@@ -7,7 +7,7 @@ import {
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import DetailPage from "../pages/DetailPage";
 import IncomePage from "../pages/IncomePage";
 import SpendingPage from "../pages/SpendingPage";
