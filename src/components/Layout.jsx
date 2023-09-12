@@ -13,34 +13,23 @@ export const Layout = () => {
   }
 
   return (
-    <div className="h-screen flex-row flex  w-full">
+    <div className="flex relative dark:bg-main-dark-bg">
+      {IsOpen ? (
+        <div className="w-64 fixed sidebar dark:bg-secondary-dark-bg bg-white">
+          <Sidebar />
+        </div>
+      ) : (
+        <div className="w-5 dark:bg-secondary-dark-bg">
+          <Sidebar />
+        </div>
+      )}
       <div
-        className={` ${
-          IsOpen ? `w-[61px]` : `w-[248px]`
-        } min-h-full bg-slate-600 relative transition duration-300 ease-in-out `}
+        className={
+          IsOpen
+            ? "dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full"
+            : "bg-main-bg dark:bg-main-dark-bg w-full min-h-screen flex-2"
+        }
       >
-        <Sidebar IsOpen={IsOpen} />
-        <label htmlFor="toggle">
-          <div className="h-7 w-7 flex justify-center items-center bg-slate-200 absolute top-4 -right-3 rounded-full">
-            <div className="">
-              {IsOpen ? (
-                <RightCircleTwoTone style={{ fontSize: "32px" }} />
-              ) : (
-                <LeftCircleTwoTone style={{ fontSize: "32px" }} />
-              )}
-            </div>
-          </div>
-        </label>
-        <input
-          type="checkbox"
-          name="toggle"
-          id="toggle"
-          checked={IsOpen}
-          onChange={handeOpen}
-          className="hidden"
-        />
-      </div>
-      <div className="w-full bg-slate-200">
         <Outlet />
       </div>
     </div>

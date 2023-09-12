@@ -1,6 +1,8 @@
 import { Radio, Space, Table, Tag } from "antd";
 import { useState } from "react";
 
+import { Button, Modal } from "antd";
+
 const columns = [
   {
     title: "Name",
@@ -119,20 +121,50 @@ const rowSelection = {
 const DetailPage = () => {
   const [top, setTop] = useState("topLeft");
   const [bottom, setBottom] = useState("bottomRight");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
-    <div className="mt-5">
-      <Table
-        columns={columns}
-        pagination={false}
-        dataSource={data}
-        scroll={{
-          y: 240,
-        }}
-        rowSelection={{
-          ...rowSelection,
-        }}
-      />
-    </div>
+    <>
+      <div className="mt-5">
+        <Table
+          columns={columns}
+          pagination={false}
+          dataSource={data}
+          scroll={{
+            y: 240,
+          }}
+          rowSelection={{
+            ...rowSelection,
+          }}
+        />
+      </div>
+
+      <div>
+        <Button type="primary" onClick={showModal}>
+          Open Modal
+        </Button>
+        <Modal
+          title="Basic Modal"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          okText="Submit"
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
+      </div>
+    </>
   );
 };
 export default DetailPage;

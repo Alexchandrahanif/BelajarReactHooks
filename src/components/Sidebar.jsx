@@ -107,28 +107,12 @@ const Sidebar = ({ IsOpen }) => {
         {/* Toogle Dark Mode */}
         <div className="w-full h-[30px] my-3 flex">
           <div className="w-[50px] h-full flex items-center">
-            {/* <label htmlFor="tuggle">
-              <div className="w-10 h-5 bg-slate-50 rounded-xl flex items-center p-1 cursor-pointer">
-                <div
-                  className={`w-4 h-4 bg-slate-800 rounded-full  tuggle-circle ${
-                    isToggleChecked ? "ml-4" : ""
-                  } `}
-                ></div>
-              </div> */}
-            {/* </label> */}
-            {/* <input
-              type="checkbox"
-              id="tuggle"
-              className="hidden"
-              checked={isToggleChecked}
-              onChange={handleToggleChange}
-            /> */}
             <Switch
-              checkedChildren={<CheckOutlined />}
-              unCheckedChildren={<CloseOutlined />}
               onChange={handleToggleChange}
               style={{
                 border: "1px solid black",
+                padding: "1px",
+                backgroundColor: "#3C486B",
               }}
             />
           </div>

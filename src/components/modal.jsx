@@ -1,25 +1,77 @@
-import React from "react";
+import { Modal as Modals } from "antd";
+import React, { useState } from "react";
+import Icons from "../library/icon";
 
-const Modal = ({ Isvisible, onClose, children }) => {
-  if (!Isvisible) return null;
-
-  const handleClose = (e) => {
-    e.target.id == "wrepper" ? onClose() : null;
+const ModalGroup = ({
+  trigger,
+  title = "",
+  okType = "",
+  okText = "",
+  cancelText = "",
+  content = "",
+  withoutFooter = false,
+  widths = 520,
+  onOk = () => {},
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
   };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSubmit = () => {
+    onOk();
+    setIsModalOpen(false);
+  };
+
   return (
-    <div
-      className="w-full h-full fixed inset-0 bg-black bg-opacity-5 backdrop-blur-[2px] flex justify-center items-center"
-      onClick={handleClose}
-      id="wrepper"
-    >
-      <div className="min-w-[700px] shadow-lg flex flex-col ">
-        <button className="place-self-end p-1" onClick={() => onClose()}>
-          X
-        </button>
-        <div className="bg-white p-3 rounded-md"> {children}</div>
+    <>
+      <div type="primary" onClick={showModal} className="cursor-pointer">
+        {trigger}
       </div>
-    </div>
+      {withoutFooter ? (
+        <Modals
+          footer={null}
+          title={title}
+          open={isModalOpen}
+          onCancel={handleCancel}
+          closable={true}
+          width={widths}
+          closeIcon={
+            <Icons type="CloseCircleOutlined" style={{ fontSize: 20.13 }} />
+          }
+          centered
+        >
+          <div style={{ margin: "20px 0" }}>
+            <div>{content}</div>
+          </div>
+        </Modals>
+      ) : (
+        <Modals
+          title={title}
+          open={isModalOpen}
+          onOk={handleSubmit}
+          onCancel={handleCancel}
+          okType={okType.toLowerCase()}
+          okText={okText}
+          cancelText={cancelText}
+          closable={true}
+          closeIcon={
+            <Icons type="CloseCircleOutlined" style={{ fontSize: 20.13 }} />
+          }
+          width={widths}
+          centered
+        >
+          <div style={{ margin: "30px 0" }}>
+            <div>{content}</div>
+          </div>
+        </Modals>
+      )}
+    </>
   );
 };
 
-export default Modal;
+export default ModalGroup;

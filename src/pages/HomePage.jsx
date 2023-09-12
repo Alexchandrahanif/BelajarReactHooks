@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchUser } from "../redux/action/user";
-import popup from "../components/popup";
 import { keluar, masuk, rupiah, tabungan } from "../assets";
 
 const HomePage = () => {
@@ -18,6 +17,7 @@ const HomePage = () => {
           Dashboard
         </h2>
       </div>
+
       <div className="flex flex-row justify-between my-5">
         <div className="w-[23%] bg-white shadow-xl h-[90px] rounded-lg p-3 flex justify-between">
           <div className="flex flex-col">

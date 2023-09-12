@@ -1,5 +1,48 @@
 import React from "react";
 
+import { Table } from "antd";
+const columns = [
+  {
+    title: "No",
+    dataIndex: "no",
+    align: "center",
+    width: 50,
+  },
+  {
+    title: "Tanggal",
+    dataIndex: "name",
+    width: 150,
+    align: "center",
+  },
+  {
+    title: "Ketertangan",
+    dataIndex: "name",
+    width: 250,
+    align: "center",
+  },
+  {
+    title: "Total",
+    dataIndex: "name",
+    width: 150,
+    align: "center",
+  },
+  {
+    title: "Kategori",
+    dataIndex: "age",
+    width: 200,
+    align: "center",
+  },
+];
+const data = [];
+for (let i = 0; i < 100; i++) {
+  data.push({
+    no: i + 1,
+    name: `Edward King ${i + 1}`,
+    age: 32,
+    address: `London, Park Lane no. ${i + 1}`,
+  });
+}
+
 const IncomePage = () => (
   <div className="w-full h-full p-5">
     {/* Header */}
@@ -22,69 +65,16 @@ const IncomePage = () => (
     </div>
 
     {/* Tabel */}
-    <div className="w-full h-[520px] bg-slate-300 rounded-lg p-5 overflow-y-scroll scrollbar">
-      <table className="min-w-full bg-white border border-gray-300">
-        <thead className="">
-          <tr className="text-start">
-            <th className="px-6 py-3 bg-gray-100 border-b">Header 1</th>
-            <th className="px-6 py-3 bg-gray-100 border-b">Header 2</th>
-            <th className="px-6 py-3 bg-gray-100 border-b">Header 3</th>
-          </tr>
-        </thead>
-        <tbody className="">
-          <tr>
-            <td className="px-6 py-4 border-b">Data 1</td>
-            <td className="px-6 py-4 border-b">Data 2</td>
-            <td className="px-6 py-4 border-b">Data 3</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 4</td>
-            <td className="px-6 py-4 border-b">Data 5</td>
-            <td className="px-6 py-4 border-b">Data 6</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 1</td>
-            <td className="px-6 py-4 border-b">Data 2</td>
-            <td className="px-6 py-4 border-b">Data 3</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 4</td>
-            <td className="px-6 py-4 border-b">Data 5</td>
-            <td className="px-6 py-4 border-b">Data 6</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 1</td>
-            <td className="px-6 py-4 border-b">Data 2</td>
-            <td className="px-6 py-4 border-b">Data 3</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 4</td>
-            <td className="px-6 py-4 border-b">Data 5</td>
-            <td className="px-6 py-4 border-b">Data 6</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 1</td>
-            <td className="px-6 py-4 border-b">Data 2</td>
-            <td className="px-6 py-4 border-b">Data 3</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 4</td>
-            <td className="px-6 py-4 border-b">Data 5</td>
-            <td className="px-6 py-4 border-b">Data 6</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 1</td>
-            <td className="px-6 py-4 border-b">Data 2</td>
-            <td className="px-6 py-4 border-b">Data 3</td>
-          </tr>
-          <tr>
-            <td className="px-6 py-4 border-b">Data 4</td>
-            <td className="px-6 py-4 border-b">Data 5</td>
-            <td className="px-6 py-4 border-b">Data 6</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <Table
+      showHeader={true}
+      columns={columns}
+      dataSource={data}
+      pagination={false}
+      scroll={{
+        y: 380,
+      }}
+      bordered={true}
+    />
   </div>
 );
 
