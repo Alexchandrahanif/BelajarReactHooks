@@ -6,21 +6,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        PrimaryDark: "#043F9E",
-        PrimaryBright1: "#0149D1",
-        PrimaryBright2: "#0661F3",
+        primary: "#041059",
+        primaryDark: "#041059",
+        primaryLight: "#091877",
         TextDark: "#333333",
         TextLight: "#757575",
         TextWhite: "#FFFFFF",
         Gray1: "#FAFAFA",
         Gray2: "#BCBFBF",
-        DarkRed1: "#BA1E45",
-        DarkRed2: "#EF3061",
-        Pink: "#FF08C2",
-        DarkPink: "#B2158B",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
     screens: {
