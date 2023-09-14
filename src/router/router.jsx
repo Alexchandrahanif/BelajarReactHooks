@@ -8,10 +8,10 @@ import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
 import Layout from "../components/layout/Layout";
-import DetailPage from "../pages/DetailPage";
 import IncomePage from "../pages/IncomePage";
 import SpendingPage from "../pages/SpendingPage";
 import SavingPage from "../pages/SavingPage";
+import TodoList from "../pages/TodoList";
 
 const router = createBrowserRouter([
   {
@@ -49,8 +49,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/:id",
-        element: <DetailPage />,
+        path: "/todoList",
+        element: <TodoList />,
       },
       {
         path: "/income",

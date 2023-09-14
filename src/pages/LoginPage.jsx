@@ -22,7 +22,6 @@ const LoginPage = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
         message.loading("Loading...", 1, () => {
           localStorage.setItem(
             "authorization",
